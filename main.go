@@ -35,9 +35,6 @@ type Driver struct {
 }
 
 func main() {
-	//TODO:: Check that DB connections are properly closed
-	//TODO:: http return status codes
-	//TODO:: error handling
 	router := mux.NewRouter()
 	router.HandleFunc("/trip", tripEndpoint).Methods("GET", "POST")
 	router.HandleFunc("/driver/trip", driverTripEndpoint).Methods("GET", "PATCH")
