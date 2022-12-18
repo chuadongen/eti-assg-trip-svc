@@ -123,7 +123,7 @@ func tripEndpoint(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		//Check for existing ride
-		checkExistingRideQuery := fmt.Sprintf("SELECT tripId FROM trip WHERE tripStatus='pending' AND passengerId=%d;",tr.PassengerId)
+		checkExistingRideQuery := fmt.Sprintf("SELECT tripId FROM trip WHERE (tripStatus='pending' OR tripStatus='Ongoing') AND passengerId=%d;",tr.PassengerId)
 		var exitingRideId int
 		db.QueryRow(checkExistingRideQuery).Scan(&exitingRideId)
 		if exitingRideId != 0 {
